@@ -13,7 +13,7 @@ def get_requirement(file_path:str)->list[str]:
 
 
 setup(
-    name = 'Multiple Disease',
+    name = 'Multiple_Disease',
     version = '0.0.1',
     author = 'Shantanu Gupta',
     author_email='22ucc094@gmail.com',

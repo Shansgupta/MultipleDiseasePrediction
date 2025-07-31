@@ -1,0 +1,53 @@
+
+## read the data and split the data then only data transformation haopen 
+
+import os 
+import sys 
+from source_file.exception import CustomException
+from source_file.logger import logging
+import pandas as pd
+
+from sklearn.model_selection import train_test_split
+from dataclasses import dataclass
+from source_file.pipeline.datapreprocessing import DataTransformation
+from source_file.pipeline.model_training import ModelTrainer
+
+
+@dataclass
+class DataIngestionConfig:
+    train_data_path : str = os.path.join('artifacts',"train.csv") 
+    test_data_path : str = os.path.join('artifacts',"test.csv")
+    raw_data_path: str = os.path.join ('artifacts',"data.csv")
+
+class DataIngestion:
+    def __init__(self):
+        self.ingestion_config = DataIngestionConfig()
+    def initiate_data_ingestion(self):
+        logging.info("Enter a data ingestion method or component")
+        try:
+            df = pd.read_csv('data\\cleaned_diabetes_data.csv')
+            logging.info('Read the dataset as Dataframe')
+            os.makedirs(os.path.dirname(self.ingestion_config.train_data_path),exist_ok = True)
+            df.to_csv(self.ingestion_config.raw_data_path,index=False,header=True)
+            logging.info("Train test split initiated")
+            train_set,test_set = train_test_split(df,test_size=0.2,random_state=42)
+            train_set.to_csv(self.ingestion_config.train_data_path,index=False,header = True)
+            test_set.to_csv(self.ingestion_config.test_data_path,index=False,header = True)
+            logging.info("Ingestion of data is completed ")
+            return (
+                 self.ingestion_config.train_data_path,
+                 self.ingestion_config.test_data_path
+
+            )
+        except Exception as e:
+           raise CustomException(e,sys)
+       
+if __name__ == "__main__":
+  obj = DataIngestion() 
+  
+  train_data ,test_data = obj.initiate_data_ingestion()
+  data_preprocessing=DataTransformation()
+  train_arr,test_arr=data_preprocessing.initiate_data_tranformation(train_data,test_data)
+  modeltrainer = ModelTrainer()
+  print(modeltrainer.initiate_model_trainer(train_arr,test_arr))
+           
