@@ -206,3 +206,9 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 .artifacts/
+artifacts/diabetes2.pkl
+artifacts/preprocessor.pkl
+
+# Ignore large model files
+artifacts/diabetes.pkl
+
