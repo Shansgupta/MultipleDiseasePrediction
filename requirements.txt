@@ -8,4 +8,6 @@ ipykernel
 imbalanced-learn
 catboost
 xgboost
+streamlit
+streamlit-option-menu
 # -e .
