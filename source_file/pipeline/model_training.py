@@ -21,7 +21,7 @@ from source_file.utils import save_object,evaluate_models
 
 
 class ModelTrainerConfig:
-    trained_model_file_path = os.path.join ("artifacts","model.pkl")
+    trained_model_file_path = os.path.join ("artifacts","heart_disease.pkl")
 
 class ModelTrainer:
     def __init__(self):
@@ -48,7 +48,7 @@ class ModelTrainer:
              "K-NeighborsClassifier" : KNeighborsClassifier(),
              "XGBClassifier" : XGBClassifier(),
              "CatBoosting Classifier" : CatBoostClassifier(silent = True,class_weights='Balanced'),
-             "Adaboost Classifier" : AdaBoostClassifier(),
+             #"Adaboost Classifier" : AdaBoostClassifier(),
              "Support vector machine" : SVC()
                
             }
@@ -80,7 +80,7 @@ class ModelTrainer:
                     "n_neighbors": [5,7],
                     "weights": ["uniform", "distance"],
                     
-                    "p": [1, 2],  # 1 = Manhattan distance, 2 = Euclidean
+                    "p": [1, 2]
                     
                 },
 
