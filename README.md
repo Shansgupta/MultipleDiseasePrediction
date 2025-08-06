@@ -148,12 +148,12 @@ The model achieves perfect scores on the training data, which is a strong indica
 * **Streamlit:** For creating the web application and user interface.
 * **Jupyter Notebook:** For model development and experimentation.
 
-## 📊 Datasets
+##  Datasets
 
-* **Diabetes Dataset:** [Link to your dataset or mention the source, e.g., PIMA Indians Diabetes Database]
-* **Heart Disease Dataset:** [Link to your dataset or mention the source, e.g., Cleveland Heart Disease dataset from the UCI Machine Learning Repository]
+* **Diabetes Dataset:** [https://www.kaggle.com/datasets/iammustafatz/diabetes-prediction-dataset]
+* **Heart Disease Dataset:** [(https://www.kaggle.com/datasets/heart-disease-dataset)]
 
-## 🤝 Contributing
+##  Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
