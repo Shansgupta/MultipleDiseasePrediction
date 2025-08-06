@@ -21,7 +21,7 @@ from source_file.utils import save_object,evaluate_models
 
 
 class ModelTrainerConfig:
-    trained_model_file_path = os.path.join ("artifacts","heart_diseases.pkl")
+    trained_model_file_path = os.path.join ("artifacts","diabetes_diseases.pkl")
 
 class ModelTrainer:
     def __init__(self):

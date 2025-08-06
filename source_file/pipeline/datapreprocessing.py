@@ -15,7 +15,7 @@ from source_file.utils import save_object
 
 @dataclass
 class DataTransformerConfig:
-    preprocessor_obj_file_path = os.path.join('artifacts',"heart_preprocessor.pkl")
+    preprocessor_obj_file_path = os.path.join('artifacts',"diabetes_preprocessor.pkl")
 
 class DataTransformation:
     def __init__(self):
@@ -27,15 +27,15 @@ class DataTransformation:
     def get_data_transformer_object(self) :
 
         try:
-            # numerical_Columns = ['age', 'hypertension', 'heart_disease', 'bmi', 'HbA1c_level', 'blood_glucose_level', 'glucose_hba1c']
-            numerical_Columns = [
-            "Age", "RestingBP", "Cholesterol", "FastingBS", "MaxHR",
-            "Oldpeak", "cholesterol_outlier", "Oldpeak_outlier"
-                 ]
-            # categorical_columns = ['gender','smoking_history', 'age_group', 'bmi_bin']
-            categorical_columns = [
-            "Sex", "ChestPainType", "RestingECG", "ExerciseAngina", "ST_Slope"
-                 ]
+            numerical_Columns = ['age', 'hypertension', 'heart_disease', 'bmi', 'HbA1c_level', 'blood_glucose_level', 'glucose_hba1c','age_bmi_interaction','bmi_glucose_interaction']
+             #numerical_Columns = [
+            #"Age", "RestingBP", "Cholesterol", "FastingBS", "MaxHR",
+            #"Oldpeak", "cholesterol_outlier", "Oldpeak_outlier"
+             #    ]
+            categorical_columns = ['gender','smoking_history', 'age_group', 'bmi_bin']
+            #categorical_columns = [
+            #"Sex", "ChestPainType", "RestingECG", "ExerciseAngina", "ST_Slope"
+            #     ]
 
             num_pipeline = Pipeline(
                 steps=[
@@ -79,8 +79,8 @@ class DataTransformation:
             logging.info("Obtaining the preprocessing object")
 
             preprocessing_obj = self.get_data_transformer_object()
-            target_column_name = 'HeartDisease'
-            #target_column_name = 'diabetes'
+            #target_column_name = 'HeartDisease'
+            target_column_name = 'diabetes'
             
             input_feature_train_df = train_df.drop(columns=[target_column_name],axis=1)
             target_feature_train_df = train_df[target_column_name]
@@ -94,11 +94,11 @@ class DataTransformation:
             input_feature_train_arr= preprocessing_obj.fit_transform(input_feature_train_df)
             
             input_feature_test_arr= preprocessing_obj.transform(input_feature_test_df)
-           # logging.info("Doing SMOTE operation in traindata")
-           # smote = SMOTE(sampling_strategy=0.5, random_state=42)
-           # input_feature_train_arr, target_feature_train_df = smote.fit_resample(
-           # input_feature_train_arr, target_feature_train_df
-           # ) 
+            logging.info("Doing SMOTE operation in traindata")
+            smote = SMOTE(sampling_strategy=0.5, random_state=42)
+            input_feature_train_arr, target_feature_train_df = smote.fit_resample(
+            input_feature_train_arr, target_feature_train_df
+            ) 
             logging.info("Combining both indepenedent and dependent features on both training and testing")
             train_arr = np.c_[input_feature_train_arr,np.array(target_feature_train_df)]
             test_arr = np.c_[input_feature_test_arr,np.array(target_feature_test_df)]
