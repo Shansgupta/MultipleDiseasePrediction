@@ -1,14 +1,17 @@
 # Multiple Disease Prediction System
 
-The Multiple Disease Prediction System is a machine learning project built entirely from scratch. It aims to provide a simple and intuitive interface for users to check for the possibility of having Diabetes or Heart Disease. The entire pipeline, from data preprocessing and feature engineering to model training and deployment, was developed as part of this project. The predictions are made using machine learning models trained on relevant datasets, and the application is built with Streamlit
+[![](https://img.shields.io/badge/Live_Demo-Open_App-blue?style=for-the-badge&logo=render)](https://multiplediseaseprediction-1.onrender.com)
 
+This project is a web-based application that predicts the likelihood of a user having certain diseases, such as Diabetes and Heart Disease, based on the input of various health-related parameters. This tool is intended to help users get a preliminary idea about their health condition, but it is not a substitute for professional medical advice.
+
+---
 ## 📖 Table of Contents
-* [About the Project](#about-the-project)
-* [Features](#features)
-* [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
-* [Usage](#usage)
+* [Live Demo](#-live-demo)
+* [About the Project](#-about-the-project)
+* [Features](#-features)
+* [Model Input Parameters](#-model-input-parameters)
+* [Getting Started](#-getting-started)
+* [Usage](#-usage)
 * [Challenges & Methodology](#-challenges--methodology)
 * [Model Performance](#-model-performance)
 * [Technologies Used](#️-technologies-used)
@@ -17,21 +20,61 @@ The Multiple Disease Prediction System is a machine learning project built entir
 * [License](#-license)
 * [Contact](#-contact)
 
+---
+## 🌐 Live Demo
 
+The application has been successfully deployed and is live on Render. You can access and interact with the prediction system directly in your browser.
+
+**[➡️ Try the Live Application Here!](https://multiplediseaseprediction-1.onrender.com)**
+
+---
 ## 📝 About the Project
 
-The Multiple Disease Prediction System is a machine learning project that aims to provide a simple and intuitive interface for users to check for the possibility of having Diabetes or Heart Disease. The predictions are made using machine learning models that have been trained on relevant datasets. The application is built using Streamlit, a popular Python framework for building interactive web applications for machine learning and data science projects.
+The Multiple Disease Prediction System is a machine learning project **built entirely from scratch**. It aims to provide a simple and intuitive interface for users to check for the possibility of having Diabetes or Heart Disease. The entire pipeline, from data preprocessing and feature engineering to model training and deployment, was developed as part of this project. The predictions are made using machine learning models trained on relevant datasets, and the application is built with **Streamlit** to create an interactive user experience.
 
+---
 ## ✨ Features
 
-* **Diabetes Prediction:** Predicts the likelihood of a person having diabetes based on features like Glucose level, Blood Pressure, BMI, etc.
-* **Heart Disease Prediction:** Predicts the likelihood of a person having heart disease based on features like age, sex, cholesterol levels, etc.
+* **Live Deployment:** The application is deployed on Render for easy access and demonstration.
+* **Diabetes Prediction:** Predicts the likelihood of a person having diabetes.
+* **Heart Disease Prediction:** Predicts the likelihood of a person having heart disease.
 * **User-friendly Interface:** A simple and easy-to-use interface for users to input their data and get predictions.
 * **Instantaneous Results:** The prediction results are displayed instantly on the web interface.
 
+---
+## 📋 Model Input Parameters
+
+The models require the following parameters to make a prediction:
+
+### For Diabetes Prediction
+* **Pregnancies:** Number of times pregnant
+* **Glucose:** Plasma glucose concentration over 2 hours in an oral glucose tolerance test
+* **BloodPressure:** Diastolic blood pressure (mm Hg)
+* **SkinThickness:** Triceps skin fold thickness (mm)
+* **Insulin:** 2-Hour serum insulin (mu U/ml)
+* **BMI:** Body mass index (weight in kg/(height in m)^2)
+* **DiabetesPedigreeFunction:** A function that scores the likelihood of diabetes based on family history
+* **Age:** Age in years
+
+### For Heart Disease Prediction
+* **age:** Age of the patient in years
+* **sex:** Sex of the patient (1 = male; 0 = female)
+* **cp:** Chest pain type (0-3)
+* **trestbps:** Resting blood pressure (in mm Hg)
+* **chol:** Serum cholesterol in mg/dl
+* **fbs:** Fasting blood sugar > 120 mg/dl (1 = true; 0 = false)
+* **restecg:** Resting electrocardiographic results (0,1,2)
+* **thalach:** Maximum heart rate achieved
+* **exang:** Exercise induced angina (1 = yes; 0 = no)
+* **oldpeak:** ST depression induced by exercise relative to rest
+* **slope:** The slope of the peak exercise ST segment
+* **ca:** Number of major vessels (0-3) colored by fluoroscopy
+* **thal:** Thallium Stress Test result (1 = normal; 2 = fixed defect; 3 = reversable defect)
+
+---
 ## 🚀 Getting Started
 
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running, follow these simple steps.
 
 ### Prerequisites
 
@@ -51,42 +94,36 @@ You need to have Python and pip installed on your system. You can download Pytho
     ```sh
     pip install -r requirements.txt
     ```
-    *(**Note:** You will need to create a `requirements.txt` file that lists all the libraries your project uses, such as pandas, scikit-learn, streamlit, etc.)*
+    *(**Note:** You will need to create a `requirements.txt` file that lists all the libraries your project uses.)*
 
-##  Usage
+---
+## 🎈 Usage
 
-1.  **Run the Streamlit application**
+1.  **Run the Streamlit application locally**
     ```sh
     streamlit run app.py
     ```
     *(Assuming your main application file is named `app.py`)*
 
 2.  **Open the application in your browser**
-    * The application will open in your default web browser. You can access it at `http://localhost:8501`.
+    * The application will open in your default web browser at `http://localhost:8501`.
 
-3.  **Select a disease from the sidebar**
-    * Choose between Diabetes and Heart Disease prediction.
-
-4.  **Enter the required parameters**
-    * Fill in the form with the necessary health-related information.
-
-5.  **Click on the 'Predict' button**
-    * The prediction result will be displayed on the screen.
-
-##  Challenges & Methodology
+---
+## 🧠 Challenges & Methodology
 
 ### Exploratory Data Analysis (EDA) & Feature Engineering
 
-Working with medical datasets presents unique challenges. Here are some of the key hurdles encountered and how they were addressed during the EDA and feature engineering phase:
+Working with medical datasets presents unique challenges. Here are some of the key hurdles encountered and how they were addressed:
 
-* **Handling Missing or Zero Values:** A significant challenge was dealing with zero values in columns where they are biologically impossible, such as `Glucose`, `BloodPressure`, or `BMI`. These were not truly zero but likely missing data points. To preserve the dataset's integrity, these zero values were imputed with the mean or median of the respective feature.
-* **Imbalanced Datasets:** The datasets for both diseases were imbalanced, with a significantly higher number of non-disease instances than disease instances. This can lead to a model that is biased towards the majority class. The performance was evaluated using metrics like F1-score, Precision, and Recall, which are more informative than accuracy in such cases.
-* **Outlier Detection:** Medical data often contains outliers (e.g., exceptionally high or low readings). Visualizations like box plots were used to identify these outliers. They were retained in this project to capture the full spectrum of data, but in a real-world clinical application, these would require verification by a domain expert.
-* **Feature Scaling:** The features in the datasets had widely different scales. To ensure that no single feature dominated the learning process, `StandardScaler` from Scikit-learn was used to standardize all features to a common scale. This is a crucial step for many machine learning algorithms to perform correctly.
+* **Handling Missing or Zero Values:** A significant challenge was dealing with zero values in columns where they are biologically impossible, such as `Glucose`, `BloodPressure`, or `BMI`. These were imputed with the mean or median of the respective feature.
+* **Imbalanced Datasets:** The datasets for both diseases were imbalanced. Performance was evaluated using metrics like F1-score, Precision, and Recall, which are more informative than accuracy in such cases.
+* **Outlier Detection:** Medical data often contains outliers. Visualizations like box plots were used to identify them. They were retained to capture the full spectrum of data.
+* **Feature Scaling:** Features had widely different scales. `StandardScaler` from Scikit-learn was used to standardize all features to a common scale.
 
-##  Model Performance
+---
+## 📈 Model Performance
 
-The performance of the trained models was evaluated using various metrics on both the training and testing sets. The results are detailed below.
+The performance of the trained models was evaluated using various metrics on both the training and testing sets.
 
 ### Diabetes Prediction Model
 
@@ -97,68 +134,36 @@ The model shows strong performance on the training data. On the testing data, it
 * **F1-Score:** $0.982$
 * **Precision:** $0.969$
 * **Recall:** $0.997$
-* **Confusion Matrix:**
-    ```
-    [[69781,  2170],
-     [  196, 67807]]
-    ```
-
-**Testing Set Metrics:**
-* **Accuracy:** $0.967$
-* **F1-Score:** $0.788$
-* **Precision:** $0.702$
-* **Recall:** $0.898$
-* **Confusion Matrix:**
-    ```
-    [[17372,   502],
-     [  134,  1185]]
-    ```
 
 ### Heart Disease Prediction Model
 
-The model achieves perfect scores on the training data, which is a strong indicator of **overfitting**. This means the model has learned the training data too well and may not generalize perfectly to new, unseen data. Despite this, the performance on the testing data is still high, with an accuracy of $0.870$ and a strong F1-Score of $0.885$. Future work could involve using techniques like regularization or cross-validation to create a more generalized model.
+The model achieves perfect scores on the training data, which is a strong indicator of **overfitting**. Despite this, the performance on the testing data is still high, with an accuracy of $0.870$ and a strong F1-Score of $0.885$.
 
 **Training Set Metrics:**
 * **Accuracy:** $1.0$
 * **F1-Score:** $1.0$
 * **Precision:** $1.0$
 * **Recall:** $1.0$
-* **Confusion Matrix:**
-    ```
-    [[333,   0],
-     [  0, 401]]
-    ```
 
-**Testing Set Metrics:**
-* **Accuracy:** $0.870$
-* **F1-Score:** $0.885$
-* **Precision:** $0.860$
-* **Recall:** $0.911$
-* **Confusion Matrix:**
-    ```
-    [[68, 15],
-     [ 9, 92]]
-    ```
-
+---
 ## 🛠️ Technologies Used
 
 * **Python:** The core programming language used for the project.
 * **Pandas:** For data manipulation and analysis.
 * **Scikit-learn:** For building and training the machine learning models.
 * **Streamlit:** For creating the web application and user interface.
-* **Jupyter Notebook:** For model development and experimentation.
+* **Render:** For cloud deployment of the application.
 
-##  Datasets
+---
+## 📊 Datasets
 
-* **Diabetes Dataset:** [https://www.kaggle.com/datasets/iammustafatz/diabetes-prediction-dataset]
-* **Heart Disease Dataset:** [(https://www.kaggle.com/datasets/heart-disease-dataset)]
+* **Diabetes Dataset:** [Link to your dataset or mention the source, e.g., PIMA Indians Diabetes Database]
+* **Heart Disease Dataset:** [Link to your dataset or mention the source, e.g., Cleveland Heart Disease dataset from the UCI Machine Learning Repository]
 
-##  Contributing
+---
+## 🤝 Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
 
 1.  Fork the Project
 2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
@@ -166,7 +171,12 @@ Don't forget to give the project a star! Thanks again!
 4.  Push to the Branch (`git push origin feature/AmazingFeature`)
 5.  Open a Pull Request
 
+---
+## 📄 License
 
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
 ## 📧 Contact
 
 Shantanu Gupta - [shantigupta908@gmail.com](shantigupta908@gmail.com)
