@@ -104,7 +104,7 @@ if selected == "Diabetes Prediction":
             prediction_proba = diabetes_model.predict_proba(transformed_data)
 
             st.subheader("Prediction Result")
-            if prediction[0][1] >= 0.5:
+            if prediction_proba[0][1] >= 0.5:
                 st.error(f"**Result: The person is LIKELY to have Diabetes.** (Confidence: {prediction_proba[0][1]*100:.2f}%)")
             else:
                 st.success(f"**Result: The person is LIKELY Non-Diabetic.** (Confidence: {prediction_proba[0][0]*100:.2f}%)")
