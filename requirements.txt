@@ -10,4 +10,5 @@ catboost
 xgboost
 streamlit
 streamlit-option-menu
+joblib
 # -e .
