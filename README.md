@@ -1,6 +1,6 @@
 # Multiple Disease Prediction System
 
-This project is a web-based application that predicts the likelihood of a user having certain diseases, such as Diabetes and Heart Disease, based on the input of various health-related parameters. This tool is intended to help users get a preliminary idea about their health condition, but it is not a substitute for professional medical advice.
+The Multiple Disease Prediction System is a machine learning project built entirely from scratch. It aims to provide a simple and intuitive interface for users to check for the possibility of having Diabetes or Heart Disease. The entire pipeline, from data preprocessing and feature engineering to model training and deployment, was developed as part of this project. The predictions are made using machine learning models trained on relevant datasets, and the application is built with Streamlit
 
 ## 📖 Table of Contents
 * [About the Project](#about-the-project)
